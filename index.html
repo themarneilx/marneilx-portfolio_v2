@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jon Marneil Cabahug - Portfolio</title>
+    <!-- Tailwind CSS with DaisyUI -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Custom CSS -->
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#6366f1', // indigo
+                        secondary: '#8b5cf6', // violet
+                        accent: '#ec4899', // pink
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .animate-float {
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .typing-animation::after {
+            content: "|";
+            animation: blink 1s infinite;
+        }
+        
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+        
+        .skill-bar {
+            transition: width 1s ease-in-out;
+        }
+        
+        .tech-icon {
+            transition: all 0.3s ease;
+        }
+        
+        .tech-icon:hover {
+            transform: scale(1.1);
+        }
+        
+        /* Subtle background pattern */
+        body {
+            background-image: 
+                radial-gradient(#6366f1 1px, transparent 1px),
+                radial-gradient(#6366f1 1px, transparent 1px);
+            background-position: 0 0, 25px 25px;
+            background-size: 50px 50px;
+            background-attachment: fixed;
+        }
+        
+        /* Adjust for dark theme */
+        [data-theme="dark"] body {
+            background-image: 
+                radial-gradient(hsl(var(--pc) / 0.2) 1px, transparent 1px),
+                radial-gradient(hsl(var(--pc) / 0.2) 1px, transparent 1px);
+        }
+        
+        /* Ensure content areas have solid backgrounds */
+        .bg-base-100, .bg-base-200 {
+            background-color: hsl(var(--b1) / 0.9) !important;
+        }
+        
+        .card, .navbar, footer {
+            background-color: hsl(var(--b1) / 0.95) !important;
+        }
+    </style>
+</head>
+<body class="bg-base-200 text-base-content">
+    <!-- Navigation -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-base-100/80 backdrop-blur-sm shadow-md">
+        <div class="container mx-auto px-4">
+            <div class="navbar">
+                <div class="navbar-start">
+                    <a href="#" class="btn btn-ghost text-xl font-bold">Portfolio</a>
+                </div>
+                <div class="navbar-center hidden lg:flex">
+                    <ul class="menu menu-horizontal px-1">
+                        <li><a href="#home" class="hover:text-primary">Home</a></li>
+                        <li><a href="#about" class="hover:text-primary">About</a></li>
+                        <li><a href="#skills" class="hover:text-primary">Skills</a></li>
+                        <li><a href="#projects" class="hover:text-primary">Projects</a></li>
+                        <li><a href="#contact" class="hover:text-primary">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="navbar-end">
+                    <label class="swap swap-rotate">
+                        <input type="checkbox" class="theme-controller" value="synthwave" />
+                        <svg class="swap-off fill-current w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5.64,17l-.71.71a1,1,0,0,0,0,1.41,1,1,0,0,0,1.41,0l.71-.71A1,1,0,0,0,5.64,17ZM5,12a1,1,0,0,0-1-1H3a1,1,0,0,0,0,2H4A1,1,0,0,0,5,12Zm7-7a1,1,0,0,0,1-1V3a1,1,0,0,0-2,0V4A1,1,0,0,0,12,5ZM5.64,7.05a1,1,0,0,0,.7.29,1,1,0,0,0,.71-.29,1,1,0,0,0,0-1.41l-.71-.71A1,1,0,0,0,4.93,6.34Zm12,.29a1,1,0,0,0,.7-.29l.71-.71a1,1,0,1,0-1.41-1.41L17,5.64a1,1,0,0,0,0,1.41A1,1,0,0,0,17.66,7.34ZM21,11H20a1,1,0,0,0,0,2h1a1,1,0,0,0,0-2Zm-9,8a1,1,0,0,0-1,1v1a1,1,0,0,0,2,0V20A1,1,0,0,0,12,19ZM18.36,17A1,1,0,0,0,17,18.36l.71.71a1,1,0,0,0,1.41,0,1,1,0,0,0,0-1.41ZM12,6.5A5.5,5.5,0,1,0,17.5,12,5.51,5.51,0,0,0,12,6.5Zm0,9A3.5,3.5,0,1,1,15.5,12,3.5,3.5,0,0,1,12,15.5Z"/></svg>
+                        <svg class="swap-on fill-current w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21.64,13a1,1,0,0,0-1.05-.14,8.05,8.05,0,0,1-3.37.73A8.15,8.15,0,0,1,9.08,5.49a8.59,8.59,0,0,1,.25-2A1,1,0,0,0,8,2.36,10.14,10.14,0,1,0,22,14.05,1,1,0,0,0,21.64,13Zm-9.5,6.69A8.14,8.14,0,0,1,7.08,5.22v.27A10.15,10.15,0,0,0,17.22,15.63a9.79,9.79,0,0,0,2.1-.22A8.11,8.11,0,0,1,12.14,19.73Z"/></svg>
+                    </label>
+                    <div class="dropdown dropdown-end lg:hidden">
+                        <div tabindex="0" role="button" class="btn btn-ghost">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
+                        </div>
+                        <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+                            <li><a href="#home">Home</a></li>
+                            <li><a href="#about">About</a></li>
+                            <li><a href="#skills">Skills</a></li>
+                            <li><a href="#projects">Projects</a></li>
+                            <li><a href="#contact">Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center pt-16">
+        <div class="container mx-auto px-4 py-20 flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 mb-10 md:mb-0" data-aos="fade-right">
+                <h1 class="text-4xl md:text-6xl font-bold mb-4">
+                    Hi, I'm <span class="text-primary">Jon Marneil Cabahug</span>
+                </h1>
+                <h2 class="text-2xl md:text-4xl font-bold mb-6">
+                    <span class="typing-animation">IT Undergraduate</span>
+                </h2>
+                <p class="text-lg mb-8 max-w-lg">
+                    Passionate about technology and creating innovative solutions. 
+                    I specialize in full-stack development with expertise in modern web technologies, 
+                    system administration, and computer troubleshooting.
+                </p>
+                <div class="flex flex-wrap gap-4">
+                    <a href="#projects" class="btn btn-primary">
+                        <i class="fas fa-briefcase mr-2"></i>View Projects
+                    </a>
+                    <a href="#contact" class="btn btn-outline btn-primary">
+                        <i class="fas fa-envelope mr-2"></i>Contact Me
+                    </a>
+                    <a href="cv.pdf" download class="btn btn-outline btn-secondary">
+                        <i class="fas fa-download mr-2"></i>Download CV
+                    </a>
+                </div>
+            </div>
+            <div class="md:w-1/2 flex justify-center" data-aos="fade-left">
+                <div class="relative">
+                    <div class="w-64 h-64 md:w-80 md:h-80 bg-primary rounded-full absolute -top-4 -left-4 opacity-20 animate-float"></div>
+                    <div class="w-64 h-64 md:w-80 md:h-80 bg-secondary rounded-full absolute -bottom-4 -right-4 opacity-20 animate-float animation-delay-1000"></div>
+                    <div class="avatar relative z-10">
+                        <div class="w-60 h-60 md:w-72 md:h-72 rounded-full border-4 border-primary overflow-hidden">
+                            <img src="me.jpg" alt="Jon Marneil Cabahug" class="w-full h-full object-cover" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-base-100">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">About Me</h2>
+                <div class="w-20 h-1 bg-primary mx-auto"></div>
+            </div>
+            
+            <div class="flex flex-col md:flex-row items-center gap-10">
+                <div class="md:w-1/2" data-aos="fade-right">
+                    <div class="bg-base-200 rounded-xl p-8 shadow-xl">
+                        <h3 class="text-2xl font-bold mb-4">My Journey</h3>
+                        <p class="mb-4">
+                            As an IT undergraduate at Benedicto College, I've developed a strong foundation in computer science principles 
+                            and practical application development. My journey in technology has equipped me with 
+                            diverse skills across multiple programming languages and frameworks.
+                        </p>
+                        <p class="mb-4">
+                            I'm passionate about creating efficient, scalable solutions and have hands-on experience with 
+                            system administration, server deployment, and computer troubleshooting across multiple operating systems.
+                        </p>
+                        <div class="flex flex-wrap gap-4 mt-6">
+                            <div class="badge badge-primary py-3 px-4">Problem Solving</div>
+                            <div class="badge badge-secondary py-3 px-4">System Administration</div>
+                            <div class="badge py-3 px-4" style="background: linear-gradient(45deg, #8b5cf6, #a78bfa); color: #000;">Computer Troubleshooting</div>
+                        </div>
+                        <div class="mt-6">
+                            <a href="cv.pdf" download class="btn btn-secondary">
+                                <i class="fas fa-download mr-2"></i>Download My CV
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="md:w-1/2" data-aos="fade-left">
+                    <div class="bg-base-200 rounded-xl p-8 shadow-xl">
+                        <h3 class="text-2xl font-bold mb-4">Education</h3>
+                        <div class="space-y-6">
+                            <div class="flex">
+                                <div class="mr-4">
+                                    <div class="w-12 h-12 rounded-full bg-primary flex items-center justify-center">
+                                        <i class="fas fa-graduation-cap text-white"></i>
+                                    </div>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-lg">Bachelor of Science in Information Technology</h4>
+                                    <p class="text-primary">Benedicto College</p>
+                                    <p class="text-sm">2022 - Present</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex">
+                                <div class="mr-4">
+                                    <div class="w-12 h-12 rounded-full bg-accent flex items-center justify-center">
+                                        <i class="fas fa-graduation-cap text-white"></i>
+                                    </div>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-lg">Senior High School</h4>
+                                    <p class="text-primary">Benedicto College</p>
+                                    <p class="text-sm">2021 - 2022</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex">
+                                <div class="mr-4">
+                                    <div class="w-12 h-12 rounded-full bg-secondary flex items-center justify-center">
+                                        <i class="fas fa-graduation-cap text-white"></i>
+                                    </div>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-lg">Junior High School</h4>
+                                    <p class="text-primary">St. Louis College-Cebu</p>
+                                    <p class="text-sm">2013 - 2017</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">My Skills</h2>
+                <div class="w-20 h-1 bg-primary mx-auto"></div>
+                <p class="mt-6 max-w-2xl mx-auto">Here are the technologies and tools I'm proficient in</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                <!-- Programming Languages -->
+                <div class="bg-base-100 rounded-xl p-8 shadow-xl" data-aos="fade-right">
+                    <h3 class="text-2xl font-bold mb-6 flex items-center">
+                        <i class="fas fa-code mr-3 text-primary"></i> Programming Languages
+                    </h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="flex items-center p-3 bg-base-200 rounded-lg">
+                            <div class="flex mr-3">
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="far fa-star text-yellow-400"></i>
+                            </div>
+                            <span>JavaScript/TypeScript</span>
+                        </div>
+                        <div class="flex items-center p-3 bg-base-200 rounded-lg">
+                            <div class="flex mr-3">
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star-half-alt text-yellow-400"></i>
+                                <i class="far fa-star text-yellow-400"></i>
+                                <i class="far fa-star text-yellow-400"></i>
+                            </div>
+                            <span>Java</span>
+                        </div>
+                        <div class="flex items-center p-3 bg-base-200 rounded-lg">
+                            <div class="flex mr-3">
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star-half-alt text-yellow-400"></i>
+                                <i class="far fa-star text-yellow-400"></i>
+                                <i class="far fa-star text-yellow-400"></i>
+                            </div>
+                            <span>C/C++</span>
+                        </div>
+                        <div class="flex items-center p-3 bg-base-200 rounded-lg">
+                            <div class="flex mr-3">
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star-half-alt text-yellow-400"></i>
+                                <i class="far fa-star text-yellow-400"></i>
+                                <i class="far fa-star text-yellow-400"></i>
+                            </div>
+                            <span>C#</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Technologies & Frameworks -->
+                <div class="bg-base-100 rounded-xl p-8 shadow-xl" data-aos="fade-left">
+                    <h3 class="text-2xl font-bold mb-6 flex items-center">
+                        <i class="fas fa-layer-group mr-3 text-primary"></i> Technologies & Frameworks
+                    </h3>
+                    <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                        <div class="tech-icon flex flex-col items-center justify-center p-4 bg-base-200 rounded-lg hover:bg-primary hover:text-white transition-all">
+                            <i class="fab fa-html5 text-3xl mb-2"></i>
+                            <span>HTML/CSS</span>
+                        </div>
+                        <div class="tech-icon flex flex-col items-center justify-center p-4 bg-base-200 rounded-lg hover:bg-primary hover:text-white transition-all">
+                            <i class="fab fa-bootstrap text-3xl mb-2"></i>
+                            <span>Bootstrap</span>
+                        </div>
+                        <div class="tech-icon flex flex-col items-center justify-center p-4 bg-base-200 rounded-lg hover:bg-primary hover:text-white transition-all">
+                            <i class="fab fa-angular text-3xl mb-2"></i>
+                            <span>Angular</span>
+                        </div>
+                        <div class="tech-icon flex flex-col items-center justify-center p-4 bg-base-200 rounded-lg hover:bg-primary hover:text-white transition-all">
+                            <i class="fab fa-node-js text-3xl mb-2"></i>
+                            <span>Node.js</span>
+                        </div>
+                        <div class="tech-icon flex flex-col items-center justify-center p-4 bg-base-200 rounded-lg hover:bg-primary hover:text-white transition-all">
+                            <i class="fas fa-server text-3xl mb-2"></i>
+                            <span>Express.js</span>
+                        </div>
+                        <div class="tech-icon flex flex-col items-center justify-center p-4 bg-base-200 rounded-lg hover:bg-primary hover:text-white transition-all">
+                            <i class="fas fa-database text-3xl mb-2"></i>
+                            <span>MySQL</span>
+                        </div>
+                        <div class="tech-icon flex flex-col items-center justify-center p-4 bg-base-200 rounded-lg hover:bg-primary hover:text-white transition-all">
+                            <i class="fab fa-git-alt text-3xl mb-2"></i>
+                            <span>Git</span>
+                        </div>
+                        <div class="tech-icon flex flex-col items-center justify-center p-4 bg-base-200 rounded-lg hover:bg-primary hover:text-white transition-all">
+                            <i class="fab fa-linux text-3xl mb-2"></i>
+                            <span>Linux</span>
+                        </div>
+                        <div class="tech-icon flex flex-col items-center justify-center p-4 bg-base-200 rounded-lg hover:bg-primary hover:text-white transition-all">
+                            <i class="fas fa-server text-3xl mb-2"></i>
+                            <span>Nginx</span>
+                        </div>
+                        <div class="tech-icon flex flex-col items-center justify-center p-4 bg-base-200 rounded-lg hover:bg-primary hover:text-white transition-all">
+                            <i class="fas fa-cloud text-3xl mb-2"></i>
+                            <span>Cloudflare</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Operating Systems -->
+                <div class="bg-base-100 rounded-xl p-8 shadow-xl md:col-span-2" data-aos="fade-up">
+                    <h3 class="text-2xl font-bold mb-6 flex items-center">
+                        <i class="fas fa-desktop mr-3 text-primary"></i> Operating Systems & Server Expertise
+                    </h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="flex items-center p-4 bg-base-200 rounded-lg">
+                            <i class="fab fa-windows text-3xl mr-4 text-blue-500"></i>
+                            <div>
+                                <h4 class="font-bold">Windows</h4>
+                                <p class="text-sm">Professional/Server Administration</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center p-4 bg-base-200 rounded-lg">
+                            <i class="fab fa-linux text-3xl mr-4 text-black dark:text-white"></i>
+                            <div>
+                                <h4 class="font-bold">Linux</h4>
+                                <p class="text-sm">Arch, Mint, Ubuntu Server</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center p-4 bg-base-200 rounded-lg">
+                            <i class="fab fa-apple text-3xl mr-4"></i>
+                            <div>
+                                <h4 class="font-bold">macOS</h4>
+                                <p class="text-sm">Administration & Troubleshooting</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center p-4 bg-base-200 rounded-lg">
+                            <i class="fas fa-server text-3xl mr-4 text-primary"></i>
+                            <div>
+                                <h4 class="font-bold">Linux Servers</h4>
+                                <p class="text-sm">Samba & Storage Server Deployment</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-6">
+                        <h4 class="font-bold text-lg mb-2">Computer Troubleshooting</h4>
+                        <p>Extensive experience in troubleshooting desktop computers and parts of laptops, including operating system issues across Windows, Linux, and macOS platforms.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 bg-base-100">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">My Projects</h2>
+                <div class="w-20 h-1 bg-primary mx-auto"></div>
+                <p class="mt-6 max-w-2xl mx-auto">Here are some of my recent projects</p>
+            </div>
+            
+            <div class="grid grid-cols-1 gap-8 max-w-5xl mx-auto">
+                <!-- Project 1 -->
+                <div class="card bg-base-100 shadow-xl hover:shadow-2xl transition-all duration-300" data-aos="fade-up">
+                    <figure class="bg-gray-200 border-2 border-dashed rounded-xl w-full h-80">
+                        <img src="library.png" alt="Library Management System" class="w-full h-full object-cover rounded-t-xl" />
+                    </figure>
+                    <div class="card-body">
+                        <h3 class="card-title">Library Management System
+                            <div class="badge badge-primary">Angular</div>
+                        </h3>
+                        <p>A comprehensive library management system developed for Benedicto College using Angular framework with Node.js and Express backend. Currently in development.</p>
+                        <div class="card-actions justify-end mt-4">
+                            <div class="badge badge-outline">Angular</div>
+                            <div class="badge badge-outline">TypeScript</div>
+                            <div class="badge badge-outline">Node.js</div>
+                            <div class="badge badge-outline">Express</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Get In Touch</h2>
+                <div class="w-20 h-1 bg-primary mx-auto"></div>
+                <p class="mt-6 max-w-2xl mx-auto">Have a project in mind or want to discuss opportunities? Feel free to reach out!</p>
+            </div>
+            
+            <div class="flex flex-col lg:flex-row gap-10">
+                <div class="lg:w-1/2" data-aos="fade-right">
+                    <div class="bg-base-100 rounded-xl p-8 shadow-xl h-full">
+                        <h3 class="text-2xl font-bold mb-6">Contact Information</h3>
+                        <div class="space-y-6">
+                            <div class="flex items-start">
+                                <div class="mr-4 mt-1 text-primary">
+                                    <i class="fas fa-envelope text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold">Email</h4>
+                                    <p>marneilx@proton.me</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="mr-4 mt-1 text-primary">
+                                    <i class="fas fa-map-marker-alt text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold">Location</h4>
+                                    <p>Mandaue City, Cebu, Philippines</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="mr-4 mt-1 text-primary">
+                                    <i class="fab fa-github text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold">GitHub</h4>
+                                    <p><a href="https://github.com/themarneilx/" target="_blank">github.com/themarneilx</a></p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-10">
+                            <h4 class="font-bold text-lg mb-4">Connect with me</h4>
+                            <div class="flex gap-4">
+                                <a href="https://www.facebook.com/jon.cabs.3/" class="btn btn-circle btn-primary" target="_blank">
+                                    <i class="fab fa-facebook-f"></i>
+                                </a>
+                                <a href="https://www.instagram.com/joncabahug/" class="btn btn-circle btn-primary" target="_blank">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                                <a href="https://www.facebook.com/TokatechPC" class="btn btn-circle btn-primary" target="_blank">
+                                    <i class="fas fa-tools"></i>
+                                </a>
+                                <a href="https://github.com/themarneilx/" class="btn btn-circle btn-primary" target="_blank">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                                <a href="cv.pdf" download class="btn btn-circle btn-primary" title="Download CV">
+                                    <i class="fas fa-file-pdf"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="lg:w-1/2" data-aos="fade-left">
+                    <div class="bg-base-100 rounded-xl p-8 shadow-xl">
+                        <h3 class="text-2xl font-bold mb-6">Send me a message</h3>
+                        <form class="space-y-6">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div>
+                                    <label class="label">
+                                        <span class="label-text">Your Name</span>
+                                    </label>
+                                    <input type="text" placeholder="John Doe" class="input input-bordered w-full" />
+                                </div>
+                                <div>
+                                    <label class="label">
+                                        <span class="label-text">Your Email</span>
+                                    </label>
+                                    <input type="email" placeholder="john@example.com" class="input input-bordered w-full" />
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <label class="label">
+                                    <span class="label-text">Subject</span>
+                                </label>
+                                <input type="text" placeholder="Project Inquiry" class="input input-bordered w-full" />
+                            </div>
+                            
+                            <div>
+                                <label class="label">
+                                    <span class="label-text">Message</span>
+                                </label>
+                                <textarea class="textarea textarea-bordered h-32" placeholder="Your message here..."></textarea>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary w-full">
+                                <i class="fas fa-paper-plane mr-2"></i>Send Message
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer footer-center p-10 bg-base-300 text-base-content">
+        <div>
+            <div class="grid grid-flow-col gap-4">
+                <a href="#home" class="link link-hover">Home</a>
+                <a href="#about" class="link link-hover">About</a>
+                <a href="#skills" class="link link-hover">Skills</a>
+                <a href="#projects" class="link link-hover">Projects</a>
+                <a href="#contact" class="link link-hover">Contact</a>
+            </div>
+        </div>
+        <div>
+            <p>Copyright © 2025 - All rights reserved by Jon Marneil Cabahug</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
