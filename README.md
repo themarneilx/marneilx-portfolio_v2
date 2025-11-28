@@ -2,8 +2,8 @@
 
 A modern, responsive personal portfolio website built with **Next.js 15**, **TypeScript**, **Tailwind CSS**, **DaisyUI**, and **GSAP**. This project showcases my skills, projects, and professional background with smooth animations and a beautiful UI.
 
-![Portfolio Preview](/public/me.jpg) 
-*(Note: Replace this path with a screenshot of your actual website if available)*
+![Portfolio Preview](/public/screenshot.png) 
+
 
 ## 🚀 Features
 
