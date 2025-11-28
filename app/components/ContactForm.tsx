@@ -66,7 +66,7 @@ const ContactForm = () => {
                                     <a href="https://github.com/themarneilx/" className="btn btn-circle btn-primary" target="_blank" rel="noopener noreferrer">
                                         <i className="fab fa-github"></i>
                                     </a>
-                                    <a href="/cv.pdf" download className="btn btn-circle btn-primary" title="Download CV">
+                                    <a href="/cv.pdf" target="_blank" rel="noopener noreferrer" className="btn btn-circle btn-primary" title="View CV">
                                         <i className="fas fa-file-pdf"></i>
                                     </a>
                                 </div>

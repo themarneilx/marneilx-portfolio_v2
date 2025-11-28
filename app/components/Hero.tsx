@@ -70,7 +70,7 @@ const Hero = () => {
                         <a href="#contact" className="btn btn-outline btn-primary">
                             <i className="fas fa-envelope mr-2"></i>Contact Me
                         </a>
-                        <a href="/cv.pdf" download className="btn btn-outline btn-secondary">
+                        <a href="/cv.pdf" target="_blank" rel="noopener noreferrer" className="btn btn-outline btn-secondary">
                             <i className="fas fa-download mr-2"></i>Download CV
                         </a>
                     </div>
