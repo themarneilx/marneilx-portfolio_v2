@@ -43,7 +43,7 @@ const Hero = () => {
     }, { scope: heroRef });
 
     return (
-        <div className="hero min-h-screen pt-16 lg:pt-0" ref={heroRef}>
+        <div id="home" className="hero min-h-screen pt-16 lg:pt-0" ref={heroRef}>
             <ParticleBackground />
             <div className="hero-content flex-col lg:flex-row-reverse justify-between w-full px-10">
                 <div className="relative lg:w-1/2 flex justify-center">

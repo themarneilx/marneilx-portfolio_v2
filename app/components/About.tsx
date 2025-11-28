@@ -49,7 +49,7 @@ const About = () => {
                                 <div className="badge badge-accent">Troubleshooting</div>
                             </div>
                             <div className="mt-6">
-                                <a href="/cv.pdf" download className="btn btn-primary">
+                                <a href="/cv.pdf" target="_blank" rel="noopener noreferrer" className="btn btn-primary">
                                     <i className="fas fa-download mr-2"></i>Download My CV
                                 </a>
                             </div>
