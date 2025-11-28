@@ -58,9 +58,9 @@ To make the contact form work, you need to configure your SMTP settings.
 2.  Add the following environment variables (example for Gmail):
 
     ```env
-    SMTP_HOST=smtp.gmail.com
+    SMTP_HOST=smtp.example.com
     SMTP_PORT=587
-    SMTP_USER=your-email@gmail.com
+    SMTP_USER=your-email@example.com
     SMTP_PASS=your-app-password
     SMTP_SECURE=false
     ```
